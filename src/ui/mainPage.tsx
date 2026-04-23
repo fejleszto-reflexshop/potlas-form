@@ -124,7 +124,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
     }
 
     return (
-        <div className="min-h-screen bg-[#f6f7fb] px-4 py-10">
+        <div className="min-h-screen px-4 py-10">
             <main className="mx-auto w-full max-w-170">
                 <div className="mb-6 flex justify-center">
                     <img src={"https://reflexshop.hu/shop_ordered/51636/design_pic/favicon.ico"}
@@ -156,6 +156,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 type="text"
                                 placeholder="Enter text"
                                 required
+                                autoComplete={"off"}
                                 value={formData.nameOrOrderId}
                                 onChange={handleChange}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
@@ -195,6 +196,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                   name="replacementDescription"
                                   placeholder="Enter text"
                                   required
+                                  autoComplete={"off"}
                                   rows={4}
                                   value={formData.replacementDescription}
                                   onChange={handleChange}
@@ -217,7 +219,6 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
                             >
                                 <option value="">Select option...</option>
-                                <option value="-">-</option>
                                 <option value="Elhasználódott/Elromlott"> Elhasználódott/Elromlott </option>
                                 <option value="Eltűnt"> Eltűnt </option>
                                 <option value="Eleve hiányos/sérült volt"> Eleve hiányos/sérült volt </option>
@@ -236,6 +237,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 type="text"
                                 placeholder="Enter text"
                                 required
+                                autoComplete={"off"}
                                 value={formData.addressOrPickup}
                                 onChange={handleChange}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
@@ -254,6 +256,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 type="email"
                                 placeholder="Enter text"
                                 required
+                                autoComplete={"off"}
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
@@ -270,6 +273,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 id="phone"
                                 name="phone"
                                 type="tel"
+                                autoComplete={"off"}
                                 placeholder="Enter text"
                                 required
                                 value={formData.phone}
@@ -285,7 +289,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                         >
                             <label
                                 htmlFor="attachment"
-                                className="flex min-h-[92px] w-full cursor-pointer items-center justify-center rounded-md border border-dashed border-[#d7dbe2] bg-[#fafbfc] px-4 text-center text-[13px] text-[#6b6f76] transition hover:border-[#6d5dfc] hover:bg-[#f7f5ff]"
+                                className="flex min-h-23 w-full cursor-pointer items-center justify-center rounded-md border border-dashed border-[#d7dbe2] bg-[#fafbfc] px-4 text-center text-[13px] text-[#6b6f76] transition hover:border-[#6d5dfc] hover:bg-[#f7f5ff]"
                             >
                                 {formData.attachment
                                     ? formData.attachment.name

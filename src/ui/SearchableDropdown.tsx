@@ -63,6 +63,7 @@ export function SearchableDropdown({
                 type="text"
                 value={value}
                 required={required}
+                autoComplete={"off"}
                 placeholder={placeholder}
                 onChange={(e) => {
                     onChange(e.target.value);

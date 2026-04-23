@@ -16,6 +16,7 @@ html, body {
     justify-content: center;
     align-items: center;
     gap: 1em;
+    background-color: #f6f7fb;
 }
 
 h4 {

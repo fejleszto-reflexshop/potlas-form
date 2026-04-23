@@ -7,7 +7,7 @@ type ErrorPageProps = {
 
 export function ErrorPage({ onBack }: ErrorPageProps): JSX.Element {
     return (
-        <div className="min-h-screen bg-[#f6f7fb] px-4 py-10">
+        <div className="min-h-screen px-4 py-10 flex justify-center items-center">
             <main className="mx-auto w-full max-w-115">
                 <section className="rounded-2xl bg-white px-6 py-8 shadow-sm ring-1 ring-black/5 text-center">
                     <h1 className="text-[28px] font-semibold text-red-600">

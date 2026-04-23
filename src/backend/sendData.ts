@@ -21,10 +21,13 @@ export async function sendData(data: ReplacementFormData): Promise<Response> {
     formData.append("phone", data.phone);
 
     if (data.attachment) {
+        formData.append("isAttachment", "true");
         formData.append("attachment", data.attachment);
+    } else {
+        formData.append("isAttachment", "false");
     }
 
-    return fetch("https://reflexshop.app.n8n.cloud/webhook-test/api/clickup-task", {
+    return fetch(import.meta.env.VITE_URL as string, {
         method: "POST",
         body: formData,
     });
