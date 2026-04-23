@@ -217,10 +217,10 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
                             >
                                 <option value="">Select option...</option>
-                                <option value="missing">Hiányzó alkatrész</option>
-                                <option value="damaged">Sérült alkatrész</option>
-                                <option value="lost">Elveszett alkatrész</option>
-                                <option value="other">Egyéb</option>
+                                <option value="-">-</option>
+                                <option value="Elhasználódott/Elromlott"> Elhasználódott/Elromlott </option>
+                                <option value="Eltűnt"> Eltűnt </option>
+                                <option value="Eleve hiányos/sérült volt"> Eleve hiányos/sérült volt </option>
                             </select>
                         </FormField>
 
