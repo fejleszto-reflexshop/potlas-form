@@ -4,7 +4,7 @@ import { MainPage } from "./ui/mainPage";
 import { DonePage } from "./ui/donePage";
 import { ErrorPage } from "./ui/errorPage";
 
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 type Page = "form" | "done" | "error";
 
