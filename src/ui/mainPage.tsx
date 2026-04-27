@@ -1,8 +1,8 @@
-import {useState, type ChangeEvent, type FormEvent} from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { sendData, type ReplacementFormData } from "../backend/sendData";
 import { SearchableDropdown } from "./SearchableDropdown";
-import '../App.css'
-import {dropdownOptions} from "../backend/DropdownOptions.ts";
+import "../App.css";
+import { dropdownOptions } from "../backend/DropdownOptions.ts";
 
 type MainPageProps = {
     onSuccess: () => void;
@@ -32,14 +32,14 @@ function FormField({
         <div className="flex flex-col gap-1.5">
             <label
                 htmlFor={id}
-                className="text-[14px] font-medium text-[#2f2f2f] leading-[1.4]"
+                className="text-[14px] font-medium leading-[1.4] text-[#2f2f2f]"
             >
                 {label}
                 {required && <RequiredStar />}
             </label>
 
             {description && (
-                <p className="text-[12px] text-[#6b6f76] leading-[1.45]">
+                <p className="text-[12px] leading-[1.45] text-[#6b6f76]">
                     {description}
                 </p>
             )}
@@ -127,8 +127,10 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
         <div className="min-h-screen px-4 py-10">
             <main className="mx-auto w-full max-w-170">
                 <div className="mb-6 flex justify-center">
-                    <img src={"https://reflexshop.hu/shop_ordered/51636/design_pic/favicon.ico"}
-                         alt={"reflexshop-logo"} />
+                    <img
+                        src="https://reflexshop.hu/shop_ordered/51636/design_pic/favicon.ico"
+                        alt="reflexshop-logo"
+                    />
                 </div>
 
                 <section className="rounded-2xl bg-white px-6 py-7 shadow-sm ring-1 ring-black/5">
@@ -136,6 +138,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                         <h1 className="text-[30px] font-semibold tracking-[-0.02em] text-[#1f1f1f]">
                             Pótlási kérelem
                         </h1>
+
                         <p className="mt-2 text-[13px] leading-[1.55] text-[#5f636b]">
                             Ha hiányzott, elveszett vagy netán megsérült, ne aggódj, mi
                             segítünk. Töltsd ki ezt az űrlapot, hogy a kollégák értesüljenek
@@ -156,7 +159,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 type="text"
                                 placeholder="Enter text"
                                 required
-                                autoComplete={"off"}
+                                autoComplete="off"
                                 value={formData.nameOrOrderId}
                                 onChange={handleChange}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
@@ -191,17 +194,17 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                             description="Írd le kérlek, hogy pontosan melyik komponens hiányzik vagy sérült."
                             required
                         >
-                              <textarea
-                                  id="replacementDescription"
-                                  name="replacementDescription"
-                                  placeholder="Enter text"
-                                  required
-                                  autoComplete={"off"}
-                                  rows={4}
-                                  value={formData.replacementDescription}
-                                  onChange={handleChange}
-                                  className="w-full rounded-md border border-[#d7dbe2] bg-white px-3 py-2.5 text-[14px] text-[#1f1f1f] outline-none transition resize-y focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
-                              />
+              <textarea
+                  id="replacementDescription"
+                  name="replacementDescription"
+                  placeholder="Enter text"
+                  required
+                  autoComplete="off"
+                  rows={4}
+                  value={formData.replacementDescription}
+                  onChange={handleChange}
+                  className="w-full resize-y rounded-md border border-[#d7dbe2] bg-white px-3 py-2.5 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
+              />
                         </FormField>
 
                         <FormField
@@ -219,9 +222,13 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
                             >
                                 <option value="">Select option...</option>
-                                <option value="Elhasználódott/Elromlott"> Elhasználódott/Elromlott </option>
-                                <option value="Eltűnt"> Eltűnt </option>
-                                <option value="Eleve hiányos/sérült volt"> Eleve hiányos/sérült volt </option>
+                                <option value="Elhasználódott/Elromlott">
+                                    Elhasználódott/Elromlott
+                                </option>
+                                <option value="Eltűnt">Eltűnt</option>
+                                <option value="Eleve hiányos/sérült volt">
+                                    Eleve hiányos/sérült volt
+                                </option>
                             </select>
                         </FormField>
 
@@ -237,7 +244,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 type="text"
                                 placeholder="Enter text"
                                 required
-                                autoComplete={"off"}
+                                autoComplete="off"
                                 value={formData.addressOrPickup}
                                 onChange={handleChange}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
@@ -256,7 +263,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 type="email"
                                 placeholder="Enter text"
                                 required
-                                autoComplete={"off"}
+                                autoComplete="off"
                                 value={formData.email}
                                 onChange={handleChange}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
@@ -273,7 +280,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                                 id="phone"
                                 name="phone"
                                 type="tel"
-                                autoComplete={"off"}
+                                autoComplete="off"
                                 placeholder="Enter text"
                                 required
                                 value={formData.phone}
