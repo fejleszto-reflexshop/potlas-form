@@ -51,11 +51,13 @@ function FormField({
 
 export function MainPage({ onSuccess, onError }: MainPageProps) {
     const [formData, setFormData] = useState<ReplacementFormData>({
-        nameOrOrderId: "",
+        name: "",
+        orderId: "",
         gameName: "",
         replacementDescription: "",
         replacementType: "",
         addressOrPickup: "",
+        customAddress: "",
         email: "",
         phone: "",
         attachment: null,
@@ -87,7 +89,7 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
         e.preventDefault();
 
         const requiredFields = {
-            nameOrOrderId: formData.nameOrOrderId.trim(),
+            name: formData.name.trim(),
             gameName: formData.gameName.trim(),
             replacementDescription: formData.replacementDescription.trim(),
             replacementType: formData.replacementType.trim(),
@@ -95,6 +97,11 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
             email: formData.email.trim(),
             phone: formData.phone.trim(),
         };
+
+        if (formData.addressOrPickup === "customAddress" && !formData.customAddress.trim()) {
+            alert("Kérlek add meg a szállítási címet.");
+            return;
+        }
 
         const hasEmptyRequiredField = Object.values(requiredFields).some(
             (value) => !value
@@ -148,19 +155,37 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
 
                     <form className="space-y-5" onSubmit={handleSubmit}>
                         <FormField
-                            id="nameOrOrderId"
-                            label="Név vagy rendelésszám"
-                            description="Kérlek add meg a neved és/vagy a rendelésszámodat. A biztos, ha van mindkettő."
+                            id="name"
+                            label="Teljes név"
+                            description="Kérlek add meg a neved."
                             required
                         >
                             <input
-                                id="nameOrOrderId"
-                                name="nameOrOrderId"
+                                id="name"
+                                name="name"
                                 type="text"
                                 placeholder="Enter text"
                                 required
                                 autoComplete="off"
-                                value={formData.nameOrOrderId}
+                                value={formData.name}
+                                onChange={handleChange}
+                                className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
+                            />
+                        </FormField>
+
+                        <FormField
+                            id="orderId"
+                            label="Rendelésszám"
+                            description="Kérlek add meg a rendelésszámodat."
+                            required={false}
+                        >
+                            <input
+                                id="orderId"
+                                name="orderId"
+                                type="text"
+                                placeholder="Enter text"
+                                autoComplete="off"
+                                value={formData.orderId}
                                 onChange={handleChange}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
                             />
@@ -194,17 +219,17 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                             description="Írd le kérlek, hogy pontosan melyik komponens hiányzik vagy sérült."
                             required
                         >
-              <textarea
-                  id="replacementDescription"
-                  name="replacementDescription"
-                  placeholder="Enter text"
-                  required
-                  autoComplete="off"
-                  rows={4}
-                  value={formData.replacementDescription}
-                  onChange={handleChange}
-                  className="w-full resize-y rounded-md border border-[#d7dbe2] bg-white px-3 py-2.5 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
-              />
+                          <textarea
+                              id="replacementDescription"
+                              name="replacementDescription"
+                              placeholder="Enter text"
+                              required
+                              autoComplete="off"
+                              rows={4}
+                              value={formData.replacementDescription}
+                              onChange={handleChange}
+                              className="w-full resize-y rounded-md border border-[#d7dbe2] bg-white px-3 py-2.5 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
+                          />
                         </FormField>
 
                         <FormField
@@ -235,21 +260,59 @@ export function MainPage({ onSuccess, onError }: MainPageProps) {
                         <FormField
                             id="addressOrPickup"
                             label="Cím/Átvétel helye"
-                            description="Írd meg kérlek, hogy milyen címre küldhetjük, vagy hogy melyik üzletben szeretnéd átvenni."
+                            description="Válaszd ki, hogy üzletben vennéd át, vagy kiszállítást kérsz."
                             required
                         >
-                            <input
+                            <select
                                 id="addressOrPickup"
                                 name="addressOrPickup"
-                                type="text"
-                                placeholder="Enter text"
                                 required
-                                autoComplete="off"
                                 value={formData.addressOrPickup}
-                                onChange={handleChange}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        addressOrPickup: value,
+                                        customAddress: value === "customAddress" ? prev.customAddress : "",
+                                    }));
+                                }}
                                 className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
-                            />
+                            >
+                                <option value="">Select option...</option>
+                                <option value="Budai üzlet (1027 Budapest Horvát utca 1-3)">
+                                    Budai üzlet (1027 Budapest Horvát utca 1-3)
+                                </option>
+                                <option value="Pesti üzlet (1067 Budapest Eötvös utca 39. (Eötvös-Szondi sarok))">
+                                    Pesti üzlet (1067 Budapest Eötvös utca 39. (Eötvös-Szondi sarok))
+                                </option>
+                                <option value="Debreceni iroda és átvételi pont (4028 Debrecen Sámsoni út 16/A)">
+                                    Debreceni iroda és átvételi pont (4028 Debrecen Sámsoni út 16/A)
+                                </option>
+                                <option value="customAddress">Kérlek küldjétek ki</option>
+                            </select>
                         </FormField>
+
+                        {formData.addressOrPickup === "customAddress" && (
+                            <FormField
+                                id="customAddress"
+                                label="Szállítási cím"
+                                description="Írd meg, pontosan hova küldhetjük a pótlást."
+                                required
+                            >
+                                <input
+                                    id="customAddress"
+                                    name="customAddress"
+                                    type="text"
+                                    placeholder="Pl. 1111 Budapest, Példa utca 12."
+                                    required
+                                    autoComplete="off"
+                                    value={formData.customAddress}
+                                    onChange={handleChange}
+                                    className="h-11 w-full rounded-md border border-[#d7dbe2] bg-white px-3 text-[14px] text-[#1f1f1f] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/20"
+                                />
+                            </FormField>
+                        )}
 
                         <FormField
                             id="email"
