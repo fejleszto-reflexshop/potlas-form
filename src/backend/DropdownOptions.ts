@@ -5237,7 +5237,6 @@ export const dropdownOptions: string[] = [`"Digital" Glowing dobókocka készlet
 ,`Mítosz társasjáték`
 ,`Mókusfutam társasjáték`
 ,`Mókuskaland társasjáték`
-,`Mölkky Minipeli fa szabadtéri játék`
 ,`Múzsa: Sugallatok társasjáték`
 ,`Műanyag dobozos klasszikus dominó`
 ,`Műgyűjtők társasága társasjáték`
@@ -6545,7 +6544,6 @@ export const dropdownOptions: string[] = [`"Digital" Glowing dobókocka készlet
 ,`Rumini - A küldetés társasjáték`
 ,`Rumini hajónapló társasjáték`
 ,`Rumini kincsesláda társasjáték`
-,`Rumini römi társasjáték`
 ,`RUMMICLASIC TRAVEL METAL BOX`
 ,`Rummikub City Budapest`
 ,`Rummikub City Edition BUDAPEST társasjáték`
