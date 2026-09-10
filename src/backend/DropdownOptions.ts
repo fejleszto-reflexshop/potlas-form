@@ -4532,7 +4532,7 @@ export const dropdownOptions: string[] = [`"Digital" Glowing dobókocka készlet
 ,`Macskaland társasjáték`
 ,`Macskanapok társasjáték`
 ,`Macskák szigete társasjáték`
-,`Macskák vs. uborkák társasjáték`
+,`Macskák vs. uborkák társasjáték | gyors, vicces családi partijáték AJÁNDÉK minikiegészítővel`
 ,`Mada társasjáték, angol nyelvű`
 ,`MadBlox (New) társasjáték`
 ,`MadBus társasjáték`
